@@ -16,10 +16,8 @@ public double calculateArea() {
 }
 
 class Rectangle extends Shape {
- private
-  double width;
- private
-  double height;
+ private double width;
+ private double height;
   @Override 
 public double calculateArea() {
     return width * height;
@@ -28,10 +26,8 @@ public double calculateArea() {
 
 // Adding a new shape without modifying existing code
 class Triangle extends Shape {
- private
-  double base;
- private
-  double height;
+ private double base;
+ private double height;
   @Override 
 public double calculateArea() {
     return 0.5 * base * height;

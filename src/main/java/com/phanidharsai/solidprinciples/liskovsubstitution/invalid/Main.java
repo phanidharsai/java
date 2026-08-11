@@ -1,5 +1,6 @@
 /** Here in the play method we will get an exception as winamp doesn't support playing video which is a clear
- * violation of liskov substitution principle which states that parent class can replace a child class when required
+ * violation of liskov substitution principle which states that parent class can replace a child class
+ * when required
  *
  * */
 

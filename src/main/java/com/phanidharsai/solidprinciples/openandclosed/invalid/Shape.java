@@ -2,8 +2,7 @@ package com.phanidharsai.solidprinciples.openandclosed.invalid;
 
 // Incorrect approach
 class Shape {
-    private
-    String type;
+    private String type;
 
     public void calculateArea() {
         if (type.equals("circle")) {
