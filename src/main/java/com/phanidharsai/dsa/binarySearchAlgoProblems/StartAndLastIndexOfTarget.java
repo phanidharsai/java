@@ -8,10 +8,11 @@ public class StartAndLastIndexOfTarget {
 
     private static int[] getIndexes(int[] nums, int target){
         int[] res = new int[2];
-        int startIndex = searchIndex(nums, target, true);
+        res[0] = searchIndex(nums, target, true);
         int endIndex = searchIndex(nums, target, false);
-        res[0]=startIndex;
-        res[1]= endIndex;
+        if(res[0]!=-1) {
+            res[1] = endIndex;
+        }
         return res;
     }
     private static int searchIndex(int[] nums, int target, boolean isFirstIndex) {
