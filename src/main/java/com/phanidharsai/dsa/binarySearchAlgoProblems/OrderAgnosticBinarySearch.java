@@ -2,10 +2,7 @@ package com.phanidharsai.dsa.binarySearchAlgoProblems;
 
 public class OrderAgnosticBinarySearch {
     public static int getIndexFromOrderAgnosticBinarySearch(int[] arr, int start, int end, int target){
-        boolean isAsc = false;
-        if(arr[start]<arr[end]){
-            isAsc=true;
-        }
+        boolean isAsc = arr[start]<arr[end];
         while(start<=end){
             int mid = start +(end-start)/2;
             if(arr[mid]==target){
