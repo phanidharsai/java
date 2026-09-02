@@ -1,3 +1,5 @@
+//https://leetcode.com/problems/search-in-rotated-sorted-array/
+
 package com.phanidharsai.dsa.binarySearchAlgoProblems;
 
 
@@ -28,7 +30,7 @@ public class BinarySearchInRotatedArray {
             if(mid>start && arr[mid]<arr[mid-1]){
                 return mid-1;
             }
-            if(arr[mid]<arr[start]){
+            if(arr[mid]<=arr[start]){
                 end=mid-1;
             }
             else{
@@ -40,6 +42,7 @@ public class BinarySearchInRotatedArray {
     public static int getIndexFromRotatedArray(int[] arr, int target){
 //        int pivot = getPivot(arr);
         int pivot = getPivotApproach2(arr);
+        System.out.println(arr[pivot]);
         if(pivot==arr.length-1){
             return BinarySearch.doBinarySearch(arr,target,0,arr.length-1);
         }
@@ -51,7 +54,8 @@ public class BinarySearchInRotatedArray {
         }
     }
     public static void main(String[] args){
-        int[] arr = {4,5,6,7,9,0,1,2};
+//        int[] arr = {4,5,6,7,9,0,1,2};
+        int[] arr = {2,9,2,2,2};
         int target = 9;
         int index = getIndexFromRotatedArray(arr,target);
         System.out.println(index);
