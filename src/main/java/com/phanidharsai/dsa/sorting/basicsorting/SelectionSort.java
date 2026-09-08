@@ -27,6 +27,16 @@ public class SelectionSort {
         return minIndex;
     }
 
+    static int findMaxIndex(int[] array, int lastIndex){
+        int maxIndex = lastIndex;
+        for(int i=lastIndex-1;i>0;i--){
+            if(array[lastIndex]<array[i]){
+                maxIndex=i;
+            }
+        }
+        return maxIndex;
+    }
+
     static int[] sortUsingSelectionSort(int[] array) {
         int j=0;
         while(j<array.length-1){     // here length-1 works bcoz when we find min index of last two elements last one would be greater anyways
@@ -36,8 +46,20 @@ public class SelectionSort {
         }
         return array;
     }
+
+    static int[] sortUsingMaxIndexSelectionSort(int[] array){
+        int j = array.length-1;
+        while(j>0){
+            int index = findMaxIndex(array,j);
+            swap(array,index,j);
+            j--;
+        }
+        return array;
+    }
     public static void main(String[] args){
         int[] unSorted={69,142,16,111,42,15,299,234};
         System.out.println(Arrays.toString(sortUsingSelectionSort(unSorted)));
+        System.out.println(Arrays.toString(sortUsingMaxIndexSelectionSort(unSorted)));
+
     }
 }
