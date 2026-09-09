@@ -3,11 +3,14 @@
  *  step-2: compare the value of the element to the left of the value and place the value where it will be
  *          if the array from index 1 to zeroth index is sorted, continue this process for the rest of the elements
  *          in the sub-array moving right.
- *          it runs in O(n^2) time complexity (worst case)                                 */
+ *          it runs in O(n) best case (ascending order)
+ *          it runs in O(n^2) time complexity (worst case, descending order)                                 */
 
 package com.phanidharsai.dsa.sorting.basicsorting;
 
 import java.util.Arrays;
+
+import static com.phanidharsai.dsa.sorting.basicsorting.BubbleSort.swap;
 
 public class InsertionSort {
     public static void sortUsingInsertion(int[] array, int rightIndex, int value) {
@@ -16,7 +19,7 @@ public class InsertionSort {
             for(;j>=0 && array[j]>value;j--){
             array[j+1]=array[j];
         }
-        System.out.println(j);
+//        System.out.println(j);
         array[j+1]=value;     // here j becomes -1 and exits the for loop, and executes this line
     }
 
@@ -36,6 +39,21 @@ public class InsertionSort {
 //            }
 //        }
 //    }
+    public static int[]  sortUsingInsertionV2(int[] arr){
+        int len = arr.length;
+        for(int i=0;i<len-1;i++){
+            for(int j=i+1;j>0;j--){
+                if(arr[j]<arr[j-1]){
+                    swap(arr,j,j-1);
+                }
+                else{
+                    break;
+                }
+            }
+
+        }
+        return arr;
+    }
 
     public static void main(String[] args){
         int[] initial={69,142,16,111,42,15,199,21};
@@ -43,5 +61,6 @@ public class InsertionSort {
             sortUsingInsertion(initial,i,initial[i+1]);
         }
         System.out.println(Arrays.toString(initial));
+        System.out.println("v2"+ Arrays.toString(sortUsingInsertionV2(initial)));
     }
 }
