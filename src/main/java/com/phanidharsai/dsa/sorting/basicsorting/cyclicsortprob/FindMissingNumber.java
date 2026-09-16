@@ -7,7 +7,7 @@ public class FindMissingNumber {
         int len = arr.length;
         int res=0;
         for(int i=0;i<arr.length;i++){
-                while( arr[i]<len &&  arr[i]!=i ){
+                while( arr[i]<len &&  arr[i]!=arr[arr[i]] ){
                     swap(arr,i,arr[i]);
                 }
         }
