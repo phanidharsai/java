@@ -1,0 +1,343 @@
+# 1. PaymentApplication.java
+
+
+package com.example.payment;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class PaymentApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(
+                PaymentApplication.class, args);
+    }
+}
+
+---
+
+# 2. PaymentMethod.java
+
+package com.example.payment;
+
+public enum PaymentMethod {
+
+    UPI,
+    CREDIT_CARD,
+    WALLET
+}
+---
+
+# 3. PaymentRequest.java
+
+package com.example.payment;
+
+public record PaymentRequest(
+        double amount,
+        String transactionId
+) {}
+
+---
+
+# 4. PaymentResponse.java
+
+package com.example.payment;
+
+public record PaymentResponse(
+        String status,
+        String message
+) {}
+
+---
+
+# 5. PaymentProcessor.java
+
+package com.example.payment;
+
+public interface PaymentProcessor {
+
+    PaymentMethod supports();
+
+    PaymentResponse process(
+            PaymentRequest request);
+}
+
+
+---
+
+# 6. UpiPayment.java
+
+
+package com.example.payment;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class UpiPayment
+        implements PaymentProcessor {
+
+    @Override
+    public PaymentMethod supports() {
+        return PaymentMethod.UPI;
+    }
+
+    @Override
+    public PaymentResponse process(
+            PaymentRequest request) {
+
+        return new PaymentResponse(
+                "SUCCESS",
+                "UPI payment processed");
+    }
+}
+
+
+---
+
+# 7. CreditCardPayment.java
+
+
+package com.example.payment;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class CreditCardPayment
+        implements PaymentProcessor {
+
+    @Override
+    public PaymentMethod supports() {
+        return PaymentMethod.CREDIT_CARD;
+    }
+
+    @Override
+    public PaymentResponse process(
+            PaymentRequest request) {
+
+        return new PaymentResponse(
+                "SUCCESS",
+                "Credit card payment processed");
+    }
+}
+
+
+---
+
+# 8. WalletPayment.java
+
+
+package com.example.payment;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class WalletPayment
+        implements PaymentProcessor {
+
+    @Override
+    public PaymentMethod supports() {
+        return PaymentMethod.WALLET;
+    }
+
+    @Override
+    public PaymentResponse process(
+            PaymentRequest request) {
+
+        return new PaymentResponse(
+                "SUCCESS",
+                "Wallet payment processed");
+    }
+}
+
+
+---
+
+# 9. PaymentProcessorFactory.java
+
+
+package com.example.payment;
+
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+@Component
+public class PaymentProcessorFactory {
+
+    private final Map<PaymentMethod, PaymentProcessor>
+            processorMap;
+
+    public PaymentProcessorFactory(
+            List<PaymentProcessor> processors) {
+
+        this.processorMap = processors.stream()
+                .collect(Collectors.toUnmodifiableMap(
+                        PaymentProcessor::supports,
+                        Function.identity()
+                ));
+    }
+
+    public PaymentProcessor getProcessor(
+            PaymentMethod paymentMethod) {
+
+        PaymentProcessor processor =
+                processorMap.get(paymentMethod);
+
+        if (processor == null) {
+            throw new IllegalArgumentException(
+                    "Unsupported payment method: "
+                            + paymentMethod);
+        }
+
+        return processor;
+    }
+}
+
+
+---
+
+# 10. PaymentService.java
+
+
+package com.example.payment;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class PaymentService {
+
+    private final PaymentProcessorFactory factory;
+
+    public PaymentService(
+            PaymentProcessorFactory factory) {
+
+        this.factory = factory;
+    }
+
+    public PaymentResponse processPayment(
+            PaymentMethod paymentMethod,
+            PaymentRequest request) {
+
+        PaymentProcessor processor =
+                factory.getProcessor(paymentMethod);
+
+        return processor.process(request);
+    }
+}
+
+
+---
+
+# 11. Main.java (Standalone Revision)
+
+Use this class to revise the Factory flow without starting Spring.
+
+For this standalone example, we manually supply the processor implementations to the Factory.
+
+
+package com.example.payment;
+
+import java.util.List;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        // 1. Create implementations
+        List<PaymentProcessor> processors = List.of(
+                new UpiPayment(),
+                new CreditCardPayment(),
+                new WalletPayment()
+        );
+
+        // 2. Create Factory
+        PaymentProcessorFactory factory =
+                new PaymentProcessorFactory(processors);
+
+        // 3. Create Service
+        PaymentService service =
+                new PaymentService(factory);
+
+        // 4. Process payment
+        PaymentResponse response =
+                service.processPayment(
+                        PaymentMethod.UPI,
+                        new PaymentRequest(
+                                1000.0,
+                                "TXN001"
+                        )
+                );
+
+        // 5. Print response
+        System.out.println(response);
+    }
+}
+
+
+**Expected output:**
+
+text
+PaymentResponse[
+    status=SUCCESS,
+    message=UPI payment processed
+]
+
+
+---
+
+# Quick Revision
+
+text
+PaymentApplication
+        |
+        v
+PaymentService
+        |
+        v
+PaymentProcessorFactory
+        |
+        v
+Map<PaymentMethod, PaymentProcessor>
+        |
+        v
+PaymentProcessor
+        |
+        +-- UpiPayment
+        +-- CreditCardPayment
+        +-- WalletPayment
+
+
+### Core methods to remember
+
+| Method             | Responsibility                                             |
+| ------------------ | ---------------------------------------------------------- |
+| `supports()`       | Identifies which payment method an implementation handles. |
+| `process()`        | Executes the implementation-specific payment logic.        |
+| `getProcessor()`   | Retrieves the processor for the requested payment method.  |
+| `processPayment()` | Delegates payment processing through the Factory.          |
+
+### Key takeaway
+
+**Factory:** Selects the appropriate implementation.
+
+**Strategy:** Defines interchangeable processing implementations.
+
+**Spring:** Manages bean creation and dependency injection.
+
+The `Main` class demonstrates the flow manually, while `PaymentApplication` starts the Spring application.
+
+************
+
+8. Production considerations
+The pattern is useful, but there are a few things to handle in a production application.
+Consideration	                            Why it matters
+Duplicate payment methods	                 toUnmodifiableMap() throws an exception if two processors return the same key.
+Unsupported methods	                          The Factory should return a clear error or use an explicit fallback policy.
+Bean initialization	                         The map is built when the Factory is constructed.
+Payment gateway failures	                  Processor implementations should handle gateway errors, timeouts, and transaction status carefully.
+Payment method validation	                Validate the requested method before attempting processing.
+One important distinction: the Factory selects the payment processor; it does not guarantee that the payment is successful.
