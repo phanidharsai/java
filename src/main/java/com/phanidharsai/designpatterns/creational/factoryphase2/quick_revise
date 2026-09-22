@@ -1,5 +1,8 @@
-# 1. PaymentApplication.java
+*********"Factory Design Pattern is a creational design pattern that centralizes object creation and supports the Open/Closed Principle by
+allowing new implementations to be added without modifying the client code."***************
 
+
+# 1. PaymentApplication.java
 
 package com.example.payment;
 
