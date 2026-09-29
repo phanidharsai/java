@@ -1,0 +1,7 @@
+"Abstract Factory is a creational design pattern that provides an interface for
+creating families of related objects without specifying their concrete classes."
+
+And the key distinction from Factory is:
+
+Factory → creates a product.
+Abstract Factory → creates a family of related products.
