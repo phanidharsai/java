@@ -1,0 +1,4 @@
+“Builder is a creational design pattern used to construct complex objects step by step.
+It separates the construction process from the final object, which is especially useful
+when an object has many optional parameters or different valid configurations.
+It improves readability and avoids telescoping constructors.”

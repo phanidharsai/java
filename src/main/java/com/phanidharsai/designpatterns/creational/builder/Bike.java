@@ -5,6 +5,10 @@ public class Bike {
     private String type;
     private Integer engineCc;
     private double mileage;
+
+    public Bike() {
+
+    }
     public Bike(String make, String type, Integer engineCc, double mileage) {
         this.make = make;
         this.type = type;
