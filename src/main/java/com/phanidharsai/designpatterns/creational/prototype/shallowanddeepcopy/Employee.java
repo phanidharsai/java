@@ -1,5 +1,8 @@
 package com.phanidharsai.designpatterns.creational.prototype.shallowanddeepcopy;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Employee implements Prototype<Employee> {
     private String name;
     private String department;

@@ -1,5 +1,8 @@
 package com.phanidharsai.designpatterns.creational.prototype.shallowanddeepcopy;
 
+import java.util.ArrayList;
+import java.util.List;
+
 // ========== Usage ==========
 public class Demo {
     public static void main(String[] args) {

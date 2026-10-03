@@ -1,1 +1,7 @@
 Create new objects by copying an existing instance (prototype) rather than building from scratch.
+
+Shallow copy + immutable field → usually safe from shared-state mutation.
+Shallow copy + mutable nested object → can cause shared-state corruption
+
+“A deep copy recursively creates independent copies of mutable nested objects,
+preventing changes in one object from affecting the other.”
