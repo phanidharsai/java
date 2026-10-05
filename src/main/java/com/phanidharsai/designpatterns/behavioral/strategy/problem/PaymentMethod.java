@@ -1,4 +1,4 @@
-package com.phanidharsai.designpatterns.behavioral.strategy.improvement;
+package com.phanidharsai.designpatterns.behavioral.strategy.problem;
 
 // PaymentMethod interface (defines the common method for all payment types)
 public interface PaymentMethod {

@@ -1,5 +1,43 @@
 **Introduction to the Strategy Pattern** 
 
+Factory and Strategy serve the same purpose?
+****They use a similar polymorphic structure, but solve different problems: Factory manages creation/selection of objects,
+while Strategy manages interchangeable behavior.*******
+
+Factory vs Strategy
+// FACTORY → creates/selects an OBJECT
+PaymentProcessor p = PaymentProcessorFactory.create(UPI);
+
+// STRATEGY → selects interchangeable BEHAVIOR
+DiscountStrategy s = new FestivalDiscountStrategy();
+s.calculate(amount);
+
+Core distinction:
+
+Factory  → "Which OBJECT should I create?"
+Strategy → "Which BEHAVIOR/ALGORITHM should I use?"
+Why they feel similar
+
+Both use interfaces + polymorphism + runtime selection and can eliminate if/else chains.
+
+Factory
+Input → implementation → OBJECT
+
+Strategy
+Input/context → implementation → BEHAVIOR
+They can work together
+Factory
+↓
+creates/selects Strategy
+↓
+Strategy
+↓
+executes the selected behavior
+
+So they don't serve the same purpose technically, but their structural approach can look very similar.
+
+Interview one-liner: Factory handles object creation; Strategy handles interchangeable behavior/algorithms.
+
 In simple terms, the Strategy Pattern allows you to define a family of algorithms or behaviors, and choose 
 the one to use during runtime. It is like having a toolbox  where you can pick the best tool (or strategy) 
 for the task at hand. This approach avoids hardcoding multiple behaviors into one class and promotes flexibility 
@@ -35,3 +73,4 @@ Use different sorting strategies (e.g., quick sort, merge sort) depending on the
 
 • Shipping Costs :
 Calculate shipping costs based on various factors such as location, delivery speed, and package size.
+

@@ -1,4 +1,4 @@
-package com.phanidharsai.designpatterns.behavioral.strategy.improvement;
+package com.phanidharsai.designpatterns.behavioral.strategy.problem;
 
 public class CreditCardPayment implements PaymentMethod {
   public void processPayment() {

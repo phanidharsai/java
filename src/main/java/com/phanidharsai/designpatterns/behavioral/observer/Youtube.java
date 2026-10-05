@@ -1,17 +1,17 @@
 package com.phanidharsai.designpatterns.behavioral.observer;
 
-public class Youtube {
+public class  Youtube {
     public static void main(String[] args){
         Channel c1 = new Channel();
         c1.cName="ALPHA";
         Channel c2 = new Channel();
         c2.cName="GAMMA";
 
-        EmailSubscriber s1 = new EmailSubscriber("you");
-        PushNotificationSubscriber s2 = new PushNotificationSubscriber("there");
+        EmailSubscriber s1 = new EmailSubscriber("ps");
+        PushNotificationSubscriber s2 = new PushNotificationSubscriber("a");
 
-        s1.channel=c1;
-        s2.channel=c2;
+        s1.addChannel(c1);
+        s2.addChannel(c2);
 
         c1.subscribe(s1);
         c2.subscribe(s2);
@@ -19,7 +19,7 @@ public class Youtube {
         c1.addVideo("stillThinking");
         c2.addVideo("almostThere");
 
-        System.out.println(c2);
+//        System.out.println(c2);
 //        System.out.println(c1);
 
     }

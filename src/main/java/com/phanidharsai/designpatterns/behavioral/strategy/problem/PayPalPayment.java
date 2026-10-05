@@ -1,4 +1,4 @@
-package com.phanidharsai.designpatterns.behavioral.strategy.improvement;
+package com.phanidharsai.designpatterns.behavioral.strategy.problem;
 
 public class PayPalPayment implements PaymentMethod {
   public void processPayment() {
