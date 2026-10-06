@@ -1,4 +1,7 @@
-package com.phanidharsai.designpatterns.behavioral.observer.phase2;
+package com.phanidharsai.designpatterns.behavioral.observer.phase2.pushmodel;
+
+import com.phanidharsai.designpatterns.behavioral.observer.phase2.DashboardListener;
+import com.phanidharsai.designpatterns.behavioral.observer.phase2.PriceAlertListener;
 
 public class Main {
     public static void main(String[] args) {

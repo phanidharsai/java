@@ -1,0 +1,14 @@
+In the Command design pattern
+encapsulate a request as an object and decouple the invoker from the receiver.
+we have a command interface
+concrete command classes implementing command interface (performing actions)
+command invoker which takes the runtime command object and passes it to the concrete command class
+class which has to be modified or changed
+( main class )
+
+Invoker → Command → Receiver
+
+The important thing about making the request an object is that the request itself can now be stored, passed around,
+queued, logged, retried, or undone.
+Command turns an action/request into an object, allowing the request to be manipulated independently of the
+receiver.

@@ -1,0 +1,30 @@
+Push gives observers the data the Subject chooses to send. Pull gives observers access to the Subject and
+lets each observer decide what data it needs.
+
+the most important architectural difference
+ Push creates stronger coupling around the data contract
+ Observer
+     ↓
+ update(temp, humidity, pressure)
+
+ The observer interface explicitly knows about the data being pushed.
+
+ Pull keeps the notification contract generic
+ Observer
+     ↓
+ update(subject)
+
+ The notification itself is simply:
+
+ "The subject changed."
+
+ The observer determines what to retrieve.
+
+ |                   | Push                                     | Pull                            |
+ | ----------------- | ---------------------------------------- | ------------------------------- |
+ | Notification      | `update(data)`                           | `update(subject)`               |
+ | Who chooses data? | Subject                                  | Observer                        |
+ | Subject sends     | Actual data                              | Reference to itself             |
+ | Observer          | Receives data                            | Retrieves data                  |
+ | Flexibility       | Less flexible as data grows              | More flexible                   |
+ | Coupling          | Observer depends on pushed data contract | Observer depends on Subject API |

@@ -1,0 +1,3 @@
+for Iterator design pattern we have the following
+iterator interface (declares the common traversal methods)
+aggregate interface ( iterator factory )

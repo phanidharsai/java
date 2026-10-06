@@ -1,4 +1,6 @@
-package com.phanidharsai.designpatterns.behavioral.observer.phase2;
+package com.phanidharsai.designpatterns.behavioral.observer.phase2.pushmodel;
+
+import com.phanidharsai.designpatterns.behavioral.observer.phase2.EventManager;
 
 import java.util.HashMap;
 import java.util.Map;

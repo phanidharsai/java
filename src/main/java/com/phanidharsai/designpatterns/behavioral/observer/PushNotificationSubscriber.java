@@ -12,7 +12,7 @@ public class PushNotificationSubscriber implements Observer{
 
     @Override
     public void addChannel(Channel ch) {
-
+        this.channel=ch;
     }
 
     @Override

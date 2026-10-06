@@ -1,0 +1,13 @@
+Observer Design Pattern
+
+We have the subject(who notifies), observer(who will get notifications)
+lets take the example of stock market
+lets assume we have two types of observers
+1) when price goes above or below a certain level.(PriceAlertListener)
+2) when a new stock gets added or any stock has been removed.(DashboardListener)
+
+We have an Eventmanager class here, which has all the event types mapped with their list of listeners in a Map.
+(eventType as key and list of listeners as values)
+It handles all the activities of adding and removing listeners for an event type, notifying the listeners with the
+corresponding runtime listener.
+
