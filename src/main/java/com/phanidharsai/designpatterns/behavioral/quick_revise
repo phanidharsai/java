@@ -1,0 +1,12 @@
+Strategy: The client/context chooses a behavior/algorithm, usually because it wants a different way of doing something.
+
+State: The object's internal state changes, and that state determines which behavior it exhibits.
+
+| Pattern              | Core essence                                                     |
+| -------------------- | ---------------------------------------------------------------- |                 |
+| **Observer**         | Notify dependent objects when subject state changes              |
+| **Command**          | Turn a request/action into an object                             |
+| **Iterator**         | Separate traversal from collection implementation                |
+| **State**            | Encapsulate behavior that changes according to an object's state |
+
+

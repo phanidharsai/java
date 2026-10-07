@@ -1,0 +1,9 @@
+Real-World Analogy
+Analogy — Customer Support Escalation
+
+When you call customer support, you first speak to a Level 1 agent. If they can't solve your problem, they escalate
+to Level 2. If that fails, it goes to a manager, then to engineering. Each handler in the chain either resolves the
+issue or passes it up. You don't decide who handles it — the chain does.
+
+Example: An HTTP request passes through authentication, authorization, rate limiting, logging, and validation — each
+middleware can stop or pass the request forward.

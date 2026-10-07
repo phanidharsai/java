@@ -1,0 +1,9 @@
+for the State design pattern we basically hold the state of an object in a separate object
+
+OrderContext is the order object which has orderstate as a private variable
+OrderState is the interface which is implemented by different OrderState objects
+the method to call the next is handled in ordercontext which internally calls current state objecct to change the state
+
+
+State lets an object's behavior change when its internal state changes, by delegating state-specific behavior
+to separate state objects.

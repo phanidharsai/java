@@ -1,0 +1,5 @@
+| Pattern              | Core essence                                                     |
+| -------------------- | ---------------------------------------------------------------- |
+| **Prototype**        | Clone an existing object instead of reconstructing it            |
+| **Factory**          | Separate object creation from the client                         |
+| **Abstract Factory** | Create consistent families of related objects
