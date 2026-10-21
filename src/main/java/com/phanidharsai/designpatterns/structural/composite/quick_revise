@@ -1,0 +1,11 @@
+The Composite pattern defines a common interface for both simple (leaf) and complex (composite) elements.
+The composite element stores children and delegates operations to them recursively. Clients interact with the
+interface without knowing if they're dealing with a leaf or an entire subtree.
+
+Four participants:
+
+Role	        Responsibility
+Component	    Common interface for leaf and composite
+Leaf	        Represents end objects with no children
+Composite	    Stores children; delegates operations recursively
+Client	        Interacts uniformly via the Component interface

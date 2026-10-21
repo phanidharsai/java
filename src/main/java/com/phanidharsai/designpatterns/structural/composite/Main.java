@@ -24,8 +24,8 @@ public class Main {
         computer.addComponent(cabinet);
 
         computer.showPrice();
-        ph.showPrice();
-        mouse.showPrice();
+//        ph.showPrice();
+//        mouse.showPrice();
 
 
 
