@@ -1,0 +1,31 @@
+❌ The Problem
+You have a Notifier class that sends emails. Now you need to also send notifications via SMS, Slack, and
+Facebook. You could create subclasses like SMSNotifier, SlackNotifier — but what if a user wants both SMS
+and Slack? You'd need SMSSlackNotifier, SMSFacebookNotifier, SlackFacebookNotifier...
+
+This leads to a class explosion — 2^n combinations for n notification types!
+
+// BAD: Subclass for every combination of notification channels
+public class EmailNotifier { /* sends email */ }
+public class SmsNotifier extends EmailNotifier { /* sends email + SMS */ }
+public class SlackNotifier extends EmailNotifier { /* sends email + Slack */ }
+public class SmsSlackNotifier extends EmailNotifier { /* sends email + SMS + Slack */ }
+public class SmsFacebookNotifier extends EmailNotifier { /* sends email + SMS + Facebook */ }
+public class SlackFacebookNotifier extends EmailNotifier { /* email + Slack + Facebook */ }
+public class SmsSlackFacebookNotifier extends EmailNotifier { /* all four */ }
+// 2^n classes for n notification channels!
+
+// Client cannot compose behaviors at runtime
+public class AlertService {
+    public void sendAlert(String message, boolean sms, boolean slack, boolean fb) {
+        // Ugly conditional logic
+        if (sms && slack && fb) {
+            new SmsSlackFacebookNotifier().send(message);
+        } else if (sms && slack) {
+            new SmsSlackNotifier().send(message);
+        } else if (sms) {
+            new SmsNotifier().send(message);
+        }
+        // ... endless if-else for every combination
+    }
+}
