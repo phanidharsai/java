@@ -6,9 +6,9 @@ public class FoamDecorator extends CoffeeDecorator {
     }
 
     public String getDescription(){
-        return decoratedCoffee.getDescription() + " + " + "foam";
+        return coffeeToBeDecorated.getDescription() + " + " + "foam";
     }
     public double getPrice(){
-        return decoratedCoffee.getPrice() + 150.0;
+        return coffeeToBeDecorated.getPrice() + 150.0;
     }
 }

@@ -1,14 +1,14 @@
 package com.phanidharsai.designpatterns.structural.decorator.solution;
 
 public class MilkDecorator extends CoffeeDecorator{
-    public MilkDecorator(Coffee coffee) {
+    public MilkDecorator(Coffee coffee){
         super(coffee);
     }
 
     public String getDescription(){
-        return decoratedCoffee.getDescription() + " + " + "milk";
+        return coffeeToBeDecorated.getDescription() + " + " + "milk";
     }
     public double getPrice(){
-        return decoratedCoffee.getPrice() + 100.0;
+        return coffeeToBeDecorated.getPrice() + 100.0;
     }
 }

@@ -1,19 +1,19 @@
 package com.phanidharsai.designpatterns.structural.decorator.solution;
 
 public abstract class CoffeeDecorator implements Coffee{
-    protected final Coffee decoratedCoffee;
+    protected final Coffee coffeeToBeDecorated;
 
-    protected CoffeeDecorator(Coffee decoratedCoffee) {
-        this.decoratedCoffee = decoratedCoffee;
+    protected CoffeeDecorator(Coffee coffeeToBeDecorated) {
+        this.coffeeToBeDecorated = coffeeToBeDecorated;
     }
 
     @Override
     public String getDescription() {
-        return decoratedCoffee.getDescription();
+        return coffeeToBeDecorated.getDescription();
     }
 
     @Override
     public double getPrice() {
-        return decoratedCoffee.getPrice() ;
+        return coffeeToBeDecorated.getPrice() ;
     }
 }

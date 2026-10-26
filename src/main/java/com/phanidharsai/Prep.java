@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.phanidharsai.dsa.sorting.basicsorting.BubbleSort.swap;
+
 public class Prep {
 //1
 //3 4
@@ -29,6 +31,9 @@ public class Prep {
     public static void main(String[] args) throws IOException {
         int[] arr = {0, 1, 0, 0, 1, 3, 2, 5, 3, 2, 3, 4, 1, 5};
         int[] arr2 = {3, 1, 2, 5, 4, 7, 6};
+        int[] arr3 = {3,3,3,3};
+        doCyclicSort(arr3);
+        System.out.println("phani " +Arrays.toString(arr3));
 
         String str = "asdfaghjklkjhgfdsa";
         Character rep = str.chars().mapToObj(c->(char)c).collect(Collectors.groupingBy(i->i,LinkedHashMap::new,Collectors.counting()))
@@ -56,6 +61,14 @@ public class Prep {
 //        inPlace(arr2,num);
         int[] s = {0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1};
         numPat();
+        String s3 = "phani";
+        s3= s3.concat("dhar");
+        Map<String, Integer> temp = new HashMap<>();
+        System.out.println(s3+"ASD");
+        int[] sortedArray= {2, 5, 9, 13, 17, 21, 30,37,69,111,137};
+        int num = 137;
+//        int indexof = binarySearch(sortedArray,num);
+//        System.out.println("phaniiiiii" + indexof);
 
     }
 
@@ -89,6 +102,19 @@ public class Prep {
             map.computeIfAbsent(key, k -> new ArrayList<>()).add(s);
         }
         return new ArrayList<>(map.values());
+
     }
 
+  public static void doCyclicSort(int[] arr){
+        int len = arr.length;
+        int i=0;
+        while(i<len){
+            if(arr[i]!= arr[arr[i]-1]){
+                swap(arr,i,arr[i]-1);
+            }
+            else{
+                i++;
+            }
+        }
+  }
 }

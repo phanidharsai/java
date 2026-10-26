@@ -29,3 +29,10 @@ public class AlertService {
         // ... endless if-else for every combination
     }
 }
+
+🎯 When to Use
+You need to add responsibilities to individual objects dynamically and transparently
+Extension by subclassing is impractical due to class explosion
+You want to add/remove behaviors at runtime
+You need to combine multiple behaviors in various combinations
+When you want features that can be withdrawn (unlike inheritance)
