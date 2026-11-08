@@ -1,0 +1,22 @@
+Q: Should we handle exceptions inside a constructor or let them propagate to the caller?
+
+Answer:
+
+A constructor should ensure that an object is created in a valid state. If a mandatory dependency is null, I prefer fail-fast validation using Objects.requireNonNull() rather than catching and swallowing the exception inside the constructor.
+PaymentService(PaymentStrategy paymentStrategy) {
+    this.paymentStrategy = Objects.requireNonNull(
+        paymentStrategy, "Payment strategy cannot be null"
+    );
+}
+
+
+If validation fails, the constructor throws a NullPointerException, preventing successful object creation.
+
+The calling layer (Main or the application layer) should catch the exception and handle it appropriately, such as displaying a user-friendly message.
+
+Key principles:
+- Constructor: Validate mandatory dependencies.
+- Fail fast: Prevent partially initialized objects.
+- Exception propagation: Let the caller decide how to handle failures.
+- Application layer: Handle errors and communicate them to users.
+Interview takeaway: Fail fast internally, handle gracefully externally.

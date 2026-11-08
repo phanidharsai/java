@@ -8,17 +8,23 @@ public class Main {
     PaymentStrategy crypto = new CryptoPayment();
     PaymentStrategy stripe = new StripePayment();
     // Use the Strategy Pattern to process payments
-    PaymentProcessor processor =
-        new PaymentProcessor(creditCard); // Initially using CreditCardPayment
-    processor.processPayment(); // Processing credit card payment...
-    // Dynamically change the payment strategy to PayPal
-    processor.setPaymentStrategy(payPal);
-    processor.processPayment(); // Processing PayPal payment...
-    // Switch to Crypto
-    processor.setPaymentStrategy(crypto);
-    processor.processPayment(); // Processing crypto payment...
-    // Switch to Stripe
-    processor.setPaymentStrategy(stripe);
-    processor.processPayment(); // Processing Stripe payment...
+    try {
+      PaymentProcessor processor =
+              new PaymentProcessor(creditCard); // Initially using CreditCardPayment
+      processor.processPayment(); // Processing credit card payment...
+      // Dynamically change the payment strategy to PayPal
+      processor.setPaymentStrategy(payPal);
+      processor.processPayment(); // Processing PayPal payment...
+      // Switch to Crypto
+      processor.setPaymentStrategy(crypto);
+      processor.processPayment(); // Processing crypto payment...
+      // Switch to Stripe
+      processor.setPaymentStrategy(stripe);
+      processor.processPayment();
+      // Processing Stripe payment...
+    }
+    catch(NullPointerException e){
+      System.out.println("Main: Unable to process payment: " + e.getMessage());
+    }
   }
 }
