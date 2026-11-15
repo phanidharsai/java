@@ -13,7 +13,7 @@ public class Main {
 //                    System.out.println(amountCheck.validate(p1));
 //                    System.out.println(amountCheck.validate(p2));
                         PaymentService processor = new PaymentService(amountCheck);
-                        processor.setPaymentMethod(p2.paymentType);
+                        PaymentResult result = processor.setPaymentMethod(p2.paymentType);
                         System.out.println(processor.processPayment(p2).getMessage());
 //                        processor.setPaymentMethod(PaymentType.UPI);
 //                        System.out.println(processor.processPayment(999999.123).isSuccess());

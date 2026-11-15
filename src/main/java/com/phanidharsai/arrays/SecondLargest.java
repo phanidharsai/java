@@ -7,16 +7,19 @@ public class SecondLargest {
     public static void findSecondLargest(Integer[] array){
         int largest=-1;
         int secondLargest=-1;
-        for(int i=1;i<array.length;i++){
+        for(int i=0;i<array.length;i++){
             if (array[i]>largest){
                 secondLargest=largest;
                 largest=array[i];
+            }
+            else if(array[i]< largest && array[i]>secondLargest ){
+                secondLargest=array[i];
             }
         }
         System.out.println(secondLargest);
     }
     public static void main(String[] args){
-        Integer[] array={6,2,4,1,5,7,9,10,16,1,3,21};
+        Integer[] array={10,1,5,6,4,3,13,8,21};
         Integer secondlargest= Arrays.stream(array)
                 .sorted(Comparator.reverseOrder())
                 .skip(1)

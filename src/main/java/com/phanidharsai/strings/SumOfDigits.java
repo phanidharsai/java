@@ -13,8 +13,8 @@ public class SumOfDigits {
         int len = input.length()-1;
         int sum=0;
         while(len>=0){
-//            sum=sum+Integer.parseInt(String.valueOf(input.charAt(len)));  // converting to string and then converting to integer
-            sum = sum + Character.getNumericValue(input.charAt(len)); //converting to integer directly
+            sum=sum+Integer.parseInt(String.valueOf(input.charAt(len)));  // converting to string and then converting to integer
+//            sum = sum + Character.getNumericValue(input.charAt(len)); //converting to integer directly
             len--;
         }
 

@@ -13,7 +13,7 @@ public class PaymentFactory {
     public static PaymentStrategy getStrategy(PaymentType paymentType) {
         Supplier<PaymentStrategy> strategy = strategies.get(paymentType);
         if (strategy == null) {
-            throw new IllegalArgumentException("illegal payment type");
+            throw new IllegalArgumentException("unsupported payment type "+ paymentType);
         }
         return strategy.get();
 

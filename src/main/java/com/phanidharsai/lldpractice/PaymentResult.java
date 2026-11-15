@@ -1,17 +1,17 @@
 package com.phanidharsai.lldpractice;
 
 public class PaymentResult {
-    private final boolean success;
+    private final PaymentStatus paymentStatus;
     private final String message;
-    public PaymentResult(boolean success, String message) {
-        this.success = success;
+    public PaymentResult(PaymentStatus paymentStatus, String message) {
+        this.paymentStatus = paymentStatus;
         this.message = message;
     }
     public String getMessage(){
         return message;
     }
 
-    public boolean isSuccess() {
-        return success;
+    public PaymentStatus getPaymentStatus() {
+        return paymentStatus;
     }
 }

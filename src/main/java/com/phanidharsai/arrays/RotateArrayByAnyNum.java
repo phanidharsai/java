@@ -58,7 +58,7 @@ public class RotateArrayByAnyNum {
     }
 
     public static void main(String[] args){
-        int arr[] = {1,2,3,4};
+        int arr[] = {1,2,3,4,5,6,7};
         Scanner sc = new Scanner(System.in);
         int num= sc.nextInt();
 //        rotateByNum(arr,num);
