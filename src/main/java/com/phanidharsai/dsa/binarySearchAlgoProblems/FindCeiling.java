@@ -27,8 +27,8 @@ public class FindCeiling {
     }
 
     public static void main(String[] args){
-        int[] arr ={2,3,5,9,14,16};
-        int num = 12;
+        int[] arr ={2,3,5,9,12,14,16};
+        int num = 6;
         int res = FindCeilingNum(arr, num);
         System.out.println(res);
     }

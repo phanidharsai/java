@@ -8,7 +8,7 @@ package com.phanidharsai.dsa.arrays;
 public class kadaneAlgo {
     public static void withFunction(int[] arr){
         int cS=0;
-        int mS =arr[0];
+        int mS =-9999999;
         for(int i=0;i<arr.length;i++){
             cS = Math.max(arr[i],cS+arr[i]);
             mS = Math.max(cS,mS);
@@ -31,19 +31,7 @@ public class kadaneAlgo {
         System.out.println(mS);
     }
     public static void main(String... args){
-        int[] in={-5, 4, -2, -7, -2, 0, -9, -8};
-        int cS=0;
-        int mS=in[0];
-        for(int i=0;i<in.length;i++){
-            cS+=in[i];
-            if(mS<cS){
-                mS=cS;
-            }
-            if(cS<0){
-                cS=0;
-            }
-        }
-        System.out.println(mS);
+        int[] in={-2,1,-3,4,-1,2,1,-5,4};
         withFunction(in);
         withoutFunction(in);
 
